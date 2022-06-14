@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q&A|PROFILE</title>
+  {%load static%}
+  <link rel="stylesheet" href="{% static 'profile.css'%}" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="img-logo">
+      <img src="{% static 'user.png'%}">
+    </div>
+    <h3>Username</h3>
+    <p>{{Profile_name}}<br></p>
+    
+    <div class="media-info">
+      <ul>
+          <li><span>0</span> Questions</li>
+          <li><span>0</span> Likes</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

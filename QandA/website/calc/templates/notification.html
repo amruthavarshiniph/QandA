@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q&A|FEED</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+      integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+
+    <!-- navbar -->
+    <nav>
+    
+      <!-- left-column -->
+    
+      <div class="nav-left">
+        <img src="{% static 'logo.png' %}" class="logo" />
+        <ul>
+          <li>
+            <a href="home_feed"><i class="bi bi-house-fill"></i>Home</a>
+          </li>
+
+          <li>
+            <a href="notification"
+              ><i class="bi bi-bell-fill"></i>Notification</a
+            >
+          </li>
+
+          <li>
+            <a href="add"><i class="bi bi-plus-square"></i>Add your question</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- right-column -->
+
+      <div class="nav-right">
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text" placeholder="Search" />
+        </div>
+        <div class="nav-user-icon online" onclick="settingsMenuToggle()">
+          <img src="{% static 'user.png' %}" />
+        </div>
+      </div>
+
+      <div class="settings-menu">
+        <!-- profile-hovering -->
+
+        <div class="settings-menu-inner">
+
+            <div class="user-profile">
+
+                <div>
+                <a href="profile"><i class="bi bi-person-circle"></i>Profile</a>
+                </div>
+            </div>
+
+              <hr>
+
+            <div class="user-profile">
+        
+                  <div>
+                    <a href="settings"><i class="bi bi-gear-fill"></i>Settings</a>
+                  </div>
+            </div>
+
+              <hr>
+
+            <div class="user-profile">
+        
+                  <div> 
+                    <a href="login"><i class="bi bi-box-arrow-left"></i>Logout</a>
+                  </div>
+            </div>
+
+        </div>
+        
+      </div>
+    </nav>
+    <!-- navbar -->
+
+    {% comment %} Notification code goes here {% endcomment %}
+    
+    <script src="{% static 'script.js' %}" charset="utf-8"></script>
+  </body>
+</html>

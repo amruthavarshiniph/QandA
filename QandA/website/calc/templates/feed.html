@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q&A|FEED</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+      integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+
+<!-- navbar -->
+    <nav>
+    
+<!-- left-column -->
+    
+      <div class="nav-left">
+        <img src="{% static 'logo.png' %}" class="logo" />
+        <ul>
+          <li>
+            <a href="home_feed"><i class="bi bi-house-fill"></i>Home</a>
+          </li>
+
+          <li>
+            <a href="notification"
+              ><i class="bi bi-bell-fill"></i>Notification</a
+            >
+          </li>
+
+          <li>
+            <a href="add"><i class="bi bi-plus-square"></i>Add your question</a>
+          </li>
+        </ul>
+      </div>
+
+<!-- right-column -->
+
+      <div class="nav-right">
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text" placeholder="Search" />
+        </div>
+        <div class="nav-user-icon online" onclick="settingsMenuToggle();">
+          <img src="{% static 'user.png' %}" />
+        </div>
+      </div>
+
+      <div class="settings-menu">
+<!-- profile-hovering -->
+
+        <div class="settings-menu-inner">
+
+            <div class="user-profile">
+
+                <div>
+                <a href="profile"><i class="bi bi-person-circle"></i>Profile</a>
+                </div>
+            </div>
+
+              <hr>
+
+            <div class="user-profile">
+        
+                  <div>
+                    <a href="settings"><i class="bi bi-gear-fill"></i>Settings</a>
+                  </div>
+            </div>
+
+              <hr>
+
+            <div class="user-profile">
+        
+                  <div> 
+                    <a href="index_login"><i class="bi bi-box-arrow-left"></i>Logout</a>
+                  </div>
+            </div>
+
+        </div>
+        
+      </div>
+    </nav>
+<!-- navbar -->
+
+<!--content -->
+<div class="container">
+
+<!-- left-side  -->      
+      <div class="left-sidebar">
+        <div class="imp-links">
+          <a href="#"><i class="bi bi-pc-display"></i>Computer Science</a>
+
+          <a href="#"><i class="bi bi-motherboard-fill"></i>Electronics</a>
+
+          <a href="#"><i class="bi bi-tools"></i>Mechanical</a>
+
+          <a href="#"><i class="bi bi-building"></i>Civil</a>
+
+          <a href="#"><i class="bi bi-robot"></i>Robotics</a>
+
+          <a href="#">See More</a>
+        </div>
+      </div>
+
+<!-- main-content  -->
+
+{% for x,y in result %}
+<div class="main-content">
+  <div class="post-container">
+    <div class="user-profile">
+      <h3><i class="bi bi-person-circle"></i></h3>
+
+      <div>
+        <p>{{x}}</p>     <!--Username-->
+      </div>
+    </div>
+
+    <p class="post-text" id="question">{{y}}</p>     <!--Question-->
+    <div class="post-row">
+      <div class="activity-icons">
+        <button id="likebtn" onclick="likebtn();">
+          <i class="far fa-thumbs-up icon_like"></i><p id="votes">0</p>
+        </button>
+
+        <button id="dislikebtn" onclick="dislikebtn();">
+          <i class="far fa-thumbs-down icon_dislike"></i><p id="votes_1">0</p>
+        </button>
+        <div class="comment-box">
+          <form action="comment" method="post">
+            {% csrf_token %}
+            <input type="text" name="answer" id="input" placeholder="Leave a comment" />
+            <button type="submit" name="button" value="submit" id="comment" onclick="comment_fun()">
+              <i class="bi bi-arrow-right-circle"></i>
+            </button>
+            
+            <div class="comments">
+            {% for i,j in answer %}
+              <h4><i class="bi bi-person-circle"></i>{{i}}</h4>
+              <h4>{{j}}</h4><br>
+            {% endfor %}
+            </div>
+          </form>
+            <!-- <button type="button" name="button" id="cancel">
+              <i class="bi bi-x-circle"></i>
+            </button> -->
+        </div>
+      </div>
+    <!-- </div>  -->
+  </div>
+</div>
+{% endfor %}
+
+<!-- right-side -->
+<!-- 
+      <div class="right-sidebar">
+        <div class="side-bar-title">
+          <h4>Message Box</h4>
+        </div>
+
+        <div class="msg-box">
+          <div class="msg-pics">
+            <h3><i class="bi bi-person-circle"></i></h3>
+          </div>
+          <div class="msgs">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
+              aspernatur nostrum aut mollitia,
+            </p>
+          </div>
+        </div>
+
+        <div class="msg-box">
+          <div class="msg-pics">
+            <h3><i class="bi bi-person-circle"></i></h3>
+          </div>
+          <div class="msgs">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
+              aspernatur nostrum aut mollitia,
+            </p>
+          </div>
+        </div>
+
+        <div class="msg-box">
+          <div class="msg-pics">
+            <h3><i class="bi bi-person-circle"></i></h3>
+          </div>
+          <div class="msgs">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
+              aspernatur nostrum aut mollitia,
+            </p>
+          </div>
+        </div>
+
+        <a href="#">See All</a>
+      </div>
+    </div> -->
+
+    <script src="{% static 'script.js' %}" charset="utf-8"></script>
+  </body>
+</html>
